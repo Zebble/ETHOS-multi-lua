@@ -1,0 +1,44 @@
+name: Sync protocols from upstream
+
+# Polls the DIY-Multiprotocol-TX-Module firmware for new protocols and adds any
+# that are missing from main.lua. GitHub does not allow real-time triggers from a
+# repo you don't own, so this runs on a daily schedule (and can be run on demand).
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # daily at 06:17 UTC
+  workflow_dispatch:        # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Sync protocols
+        run: python tools/sync_protocols.py
+
+      - name: Commit changes if any
+        run: |
+          if git diff --quiet -- main.lua; then
+            echo "main.lua already up to date — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.lua
+          git commit -m "chore: sync new multiprotocol(s) from upstream firmware"
+          git push

@@ -1,0 +1,6 @@
+# Normalize to LF so scripts run correctly on Linux CI runners and the radio.
+* text=auto eol=lf
+*.lua text eol=lf
+*.py  text eol=lf
+*.yml text eol=lf
+*.md  text eol=lf

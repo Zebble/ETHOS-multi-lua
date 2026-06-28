@@ -41,6 +41,12 @@ SKIP_NUMS = {
 # Placeholder sub-protocol labels that occupy an index but aren't selectable modes.
 PLACEHOLDER_SUBS = {"-", "--", "---", ""}
 
+# Generic MULTI module options the firmware honors for every transmitting protocol.
+GENERIC_OPTIONS = ("options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, "
+                   "LOW_POWER_OPTION}")
+# Receiver / scanner pseudo-protocols where those generic options don't apply.
+NO_GENERIC_OPTIONS = {54, 55, 56, 59, 70}  # Scanner, Frsky_RX, AFHDS2A RX, Bayang RX, DSM_RX
+
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": "ethos-multi-lua-sync"})
@@ -88,15 +94,15 @@ def lua_str_list(items):
 
 
 def build_register_line(num, name, subs):
-    opts = ""
+    parts = []
     meaningful = [s for s in subs if s not in PLACEHOLDER_SUBS]
     if len(meaningful) >= 2:
-        opts = "{variants=%s}" % lua_str_list(subs)
-    if opts:
-        return ('    system.registerMultimoduleProtocol("%s", %d, %s) '
-                "-- [auto-added] review options/channel limits\n" % (name, num, opts))
-    return ('    system.registerMultimoduleProtocol("%s", %d) '
-            "-- [auto-added] review options/channel limits\n" % (name, num))
+        parts.append("variants=%s" % lua_str_list(subs))
+    if num not in NO_GENERIC_OPTIONS:
+        parts.append(GENERIC_OPTIONS)
+    table = (", {" + ", ".join(parts) + "}") if parts else ""
+    return ('    system.registerMultimoduleProtocol("%s", %d%s) '
+            "-- [auto-added] review options/channel limits\n" % (name, num, table))
 
 
 def insert_alphabetically(lines, new_line, new_name):

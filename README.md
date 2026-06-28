@@ -28,6 +28,15 @@ Changes are tagged inline in `main.lua`:
 - `-- [UPD]` — variant/option list brought up to date (e.g. AFHDS 2A gyro modes, DSM
   `DSMR`/`DSM2-SFC`, RadioLink `RC4G`, XK `Cars`, …)
 
+### Module options (Bind on channel / Disable telemetry / Low power)
+
+The firmware honors **Low power** and **Bind on channel** for every transmitting
+protocol (they're read before the protocol is even selected), and **Disable telemetry**
+globally. FrSky's stock list only exposed these on a few protocols, so they're added to
+**all transmitting protocols** here — the receiver/scanner pseudo-protocols (`Frsky_RX`,
+`Flysky AFHDS2A RX`, `Bayang RX`, `DSM_RX`, `Scanner`) are skipped. Protocol-specific
+options (RF tune, servo rate, etc.) and failsafe flags are preserved.
+
 ## Staying in sync with upstream automatically
 
 [`tools/sync_protocols.py`](tools/sync_protocols.py) compares `main.lua` against the

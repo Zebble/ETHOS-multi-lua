@@ -92,6 +92,7 @@ local function init()
     system.registerMultimoduleProtocol("LOLI", 82, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("Losi", 89, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("MJXq", 18, {variants={"WLH08", "X600", "X800", "H26D", "E010*", "H26WH", "PHOENIX*"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
+    system.registerMultimoduleProtocol("MoFly", 109, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [auto-added] review options/channel limits
     system.registerMultimoduleProtocol("MPX MLINK", 78, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}, features=FAILSAFE})
     system.registerMultimoduleProtocol("MouldKg", 90, {variants={"A4444", "D4444", "A664"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [UPD] variants updated to current firmware
     system.registerMultimoduleProtocol("MT99xx", 17, {variants={"MT", "H7", "YZ", "LS", "FY805", "A180", "DRAGON", "F949G"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})

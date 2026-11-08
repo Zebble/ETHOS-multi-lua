@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # keepalive: re-enable call below
 
 concurrency:
   group: sync-upstream
@@ -20,6 +21,13 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      # GitHub disables scheduled workflows after 60 days with no repo activity;
+      # calling the enable endpoint on each run resets that timer (no dummy commits).
+      - name: Keepalive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/sync-upstream.yml/enable"
+
       - name: Checkout
         uses: actions/checkout@v4
 

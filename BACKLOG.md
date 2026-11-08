@@ -12,6 +12,8 @@ Open items not tracked anywhere else (no GitHub issues yet).
       `maxChannels`/failsafe yet; no `Protocols_Details.md` section existed when added).
 - [ ] **Review `-- [auto-added]` lines** whenever the Action adds one: set
       `maxChannels`, failsafe, and protocol-specific options from `Protocols_Details.md`.
+- [ ] **Confirm the keepalive works**: after 60+ days with no commits, check that
+      `gh workflow list --all` still shows `active` (added Nov 2026).
 - [ ] **Bump Action versions** (`actions/checkout`, `actions/setup-python`) when GitHub
       drops Node 20 — currently only a warning.
 - [ ] *Optional:* switch the workflow from auto-commit to PR mode if review before

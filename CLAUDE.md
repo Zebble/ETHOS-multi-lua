@@ -68,6 +68,10 @@ See `BACKLOG.md`.
 - **Workflow auto-commits to `main`** (not a PR). GitHub can't trigger the instant
   upstream changes, so it's a daily poll. The Action shows a harmless Node 20→24
   deprecation warning.
+- **60-day inactivity disable:** GitHub turns off scheduled workflows in public repos
+  after 60 days with no activity (it happened Oct 2026). The workflow's `Keepalive`
+  step calls the enable API every run to reset that timer. If the status ever shows
+  `disabled_inactivity`, re-enable: `gh workflow enable sync-upstream.yml`.
 
 ## Hardware
 Which steps need the radio or ETHOS Suite on the machine, and which run anywhere

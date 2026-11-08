@@ -159,7 +159,7 @@ def main():
     added = []
     for num in missing:
         name, subs = txt.get(num, (None, []))
-        if not name or name in PLACEHOLDER_SUBS:
+        if not name or name in PLACEHOLDER_SUBS or name.isdigit():  # bad upstream name -> use PROTO_ ident
             name = enum[num].title().replace("_", "")  # fallback from PROTO_ ident
         added.append("%d %s" % (num, name))
 
@@ -172,7 +172,7 @@ def main():
     lines = lua.splitlines(keepends=True)
     for num in missing:
         name, subs = txt.get(num, (None, []))
-        if not name or name in PLACEHOLDER_SUBS:
+        if not name or name in PLACEHOLDER_SUBS or name.isdigit():  # bad upstream name -> use PROTO_ ident
             name = enum[num].title().replace("_", "")
         insert_alphabetically(lines, build_register_line(num, name, subs), name)
 

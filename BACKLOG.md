@@ -8,6 +8,8 @@ Open items not tracked anywhere else (no GitHub issues yet).
       fails CI instead of landing on `main`. (`apt install lua5.4` + `luac5.4 -p`.)
 - [ ] **Bind-test more protocols on hardware.** Only a subset (incl. SGF22) has been
       confirmed on the X20PRO AW; the rest are correct per firmware docs but untested.
+- [ ] **Review Ares (108) and MoFly (109)** — added by the Action, still generic (no
+      `maxChannels`/failsafe yet; no `Protocols_Details.md` section existed when added).
 - [ ] **Review `-- [auto-added]` lines** whenever the Action adds one: set
       `maxChannels`, failsafe, and protocol-specific options from `Protocols_Details.md`.
 - [ ] **Bump Action versions** (`actions/checkout`, `actions/setup-python`) when GitHub

@@ -48,7 +48,7 @@ No versioned releases/tags. "Release" = land it on `main`; users pull `main.lua`
 4. Copy `main.lua` onto the radio SD card (Hardware) to use it.
 
 ## Current state
-103 protocols. Up to date with upstream as of the last commit. All three generic
+105 protocols. Up to date with upstream as of the last commit. All three generic
 module options (Bind on channel / Disable telemetry / Low power) are on every
 transmitting protocol; the RX/Scanner pseudo-protocols (54, 55, 56, 59, 70) are
 excluded. Tested working on the X20PRO AW. The daily Action keeps it in sync.

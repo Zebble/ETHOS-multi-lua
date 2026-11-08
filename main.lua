@@ -30,7 +30,7 @@ local FLYSKY_SERVO_REFRESH_RATE_OPTION = {name="Servo refresh rate", min=0, max=
 local FIXED_ID = {name="Fixed ID", type="checkbox", min=0, max=0x00000001}
 
 local function init()
-    system.registerMultimoduleProtocol("0", 108, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [auto-added] review options/channel limits
+    system.registerMultimoduleProtocol("Ares", 108, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [auto-added] review options/channel limits
     system.registerMultimoduleProtocol("Assan", 24, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("Bayang", 14, {variants={"Bayang", "H8S3D", "X16_AH", "IRDRONE", "DHD_D4", "QX100"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("Bayang RX", 59, {variants={"Multi", "CPPM"}})

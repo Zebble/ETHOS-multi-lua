@@ -39,6 +39,13 @@ jobs:
       - name: Sync protocols
         run: python tools/sync_protocols.py
 
+      # Fail the run before committing if an auto-added line broke Lua syntax.
+      - name: Lua syntax check
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          luac5.4 -p main.lua
+
       - name: Commit changes if any
         run: |
           if git diff --quiet -- main.lua; then

@@ -2,9 +2,8 @@
 
 Open items not tracked anywhere else (no GitHub issues yet).
 
-- [ ] **Run a real Lua syntax check.** `main.lua` has never been through `luac` (the
-      original dev box had no interpreter). Run `luac5.4 -p main.lua` once.
-- [ ] **Add a Lua lint step to the Action** so an auto-added line that breaks syntax
+- [x] **Run a real Lua syntax check.** `luac5.4 -p main.lua` passes (first run 2026-11-08).
+- [x] **Add a Lua lint step to the Action** so an auto-added line that breaks syntax
       fails CI instead of landing on `main`. (`apt install lua5.4` + `luac5.4 -p`.)
 - [ ] **Bind-test more protocols on hardware.** Only a subset (incl. SGF22) has been
       confirmed on the X20PRO AW; the rest are correct per firmware docs but untested.

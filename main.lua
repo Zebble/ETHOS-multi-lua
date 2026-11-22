@@ -60,6 +60,7 @@ local function init()
     system.registerMultimoduleProtocol("FQ777", 23, {options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("FrSky D8", 3, {variants={"D8", "Cloned"}, options={RF_TUNE_OPTION, BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}, minChannels=8, maxChannels=8})
     system.registerMultimoduleProtocol("FrSky R9", 65, {variants={"915MHz", "868MHz", "915_8ch", "868_8ch", "FCC", "--", "FCC_8ch", "--_8ch"}, features=FAILSAFE, maxChannels=16, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [NEW] failsafe + full telemetry
+    system.registerMultimoduleProtocol("FrskyA", 112, {variants={"16ch", "8ch", "EU16ch", "EU8ch"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}}) -- [auto-added] review options/channel limits
     system.registerMultimoduleProtocol("FrskyL", 67, {variants={"LR12", "LR12 6CH"}, options={BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("FrSky V", 25, {options={RF_TUNE_OPTION, BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
     system.registerMultimoduleProtocol("FrskyX", 15, {variants={"CH_16", "CH_8", "EU_16", "EU_8", "Cloned", "Cloned_8"}, options={RF_TUNE_OPTION, BIND_ON_CHANNEL_OPTION, DISABLE_TELEMETRY_OPTION, LOW_POWER_OPTION}})
